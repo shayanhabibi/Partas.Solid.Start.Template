@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="app.css" />
+        <Content Include="app.jsx" />
+        <Content Include="entry-client.jsx" />
+        <Content Include="entry-server.jsx" />
+        <Content Include="global.d.js" />
+        <Compile Include="Program.fs" />
+        <Compile Include="routes\index.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Partas.Solid" Version="1.1.4" />
+    </ItemGroup>
+
+</Project>
