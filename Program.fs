@@ -22,7 +22,7 @@ Target.create "Clean" (fun _ ->
 Target.create "Dev" (fun _ ->
     [
         "vinxi", npm [ "run";"dev" ] basePath
-        "fable", fable [ "watch"; "-e";".fs.jsx";"--optimize"
+        "fable", dotnet ["tool";"run";"fable";"watch"; "-e";".fs.jsx";"--optimize"
                          // Compatibility with Partas.Solid.FablePlugin
                          "-c";"Release"
                          // Interop compatibility with most JS libraries
@@ -38,11 +38,18 @@ Target.create "Restore" (fun _ ->
     ] |> runParallel
     )
 
+Target.create "Tool" (fun _ ->
+    run dotnet [ "tool";"install";"fable";"--prerelease";"--create-manifest-if-needed" ] basePath
+    )
+
+Target.create "Setup" (fun _ -> ())
+
 open Fake.Core.TargetOperators
 
 let dependencies = [
     "Clean" ==> "Dev"
     "Restore"
+    "Tool" ==> "Restore" ==> "Dev" ==> "Setup"
 ]
 
 [<EntryPoint>]
