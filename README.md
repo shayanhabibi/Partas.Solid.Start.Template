@@ -8,6 +8,8 @@ To deploy this with a dotnet server, you would have to have more intimate knowle
 
 > Uses the FAKE build process from the SAFE stack.
 
+> By default has solid-devtools installed. This is only present in dev builds and is automatically removed in production builds.
+
 ## Setup
 
 Clone the repository, go to the root of the repository and run:

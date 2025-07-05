@@ -1,4 +1,5 @@
 import { defineConfig } from "@solidjs/start/config";
+import devtools from "solid-devtools/vite";
 
 export default defineConfig({
     // Change to project name as required
@@ -9,7 +10,11 @@ export default defineConfig({
     extensions: [ 'js', 'jsx' , 'ts', 'tsx', 'fs.jsx' ],
     // Vite config
     vite: {
-        plugins:[],
+        plugins:[
+            devtools({
+                autoname: true
+            })
+        ],
         server: {
             watch: {
                 ignore: [
